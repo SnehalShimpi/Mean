@@ -1,0 +1,315 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+html
+{
+   background-color: aliceblue;
+    color:currentColor;
+    font-family: 'Crimson',sans-serif;
+    font-size: 20px;    
+    font-weight: 400;
+    text-rendering:optimizeLegibility;
+    
+}
+.row
+{
+    max-width: 1140px;
+    margin: 0 auto;
+    
+}
+.row1
+{
+    max-width: 1140px;
+    margin: 0  auto;
+    
+    
+}
+header
+{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(img/hero.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.hero-text
+{
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+h1
+{
+    margin-top: 0;
+    margin-bottom: 20px;
+    color:aliceblue;
+    font-weight:300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+}
+h2
+{
+    
+    color:black;
+    font-size: 180%;
+    font-weight:300;
+      margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    text-align: center;
+    
+}
+
+h2:after
+{
+    display: block;
+    height:2px;
+    background-color: #e67e22;
+    content:"";
+    width: 100px;
+    margin: 0 auto;
+     margin-top: 30px;
+}
+
+
+
+
+
+.btn:link ,
+btn:visited
+{
+    display: inline-block ;
+    padding: 10px 30px;
+    font-weight:300;
+   
+    border-radius: 200px;
+    text-decoration: none;
+     
+}
+.btn-1:link,
+.btn-1:visited
+{
+    background-color:#f39c12;
+    border: 1px solid #f39c12;
+
+}
+.btn-2:link,
+.btn-2:visited
+{
+    background-color:#e67e22;
+    border: 1px solid #e67e22;
+
+}
+.btn:hover,
+.btn:active
+{
+    background-color: black;
+}
+.logo1
+{
+    margin-top: 20px;
+    height: 160px;
+    width: auto;
+    float: left;
+}
+
+.main-nav
+{
+    float:right;
+    list-style: none;
+}
+
+.main-nav li
+{
+    margin-top: 55px;
+    display: inline-block;
+    margin-left: 40px; 
+}
+
+.main-nav li a:link,
+.main-nav li a:visited
+{
+    padding: 8px 0;
+    color:aliceblue;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size:90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active
+{
+    border-bottom: 2px solid #e67e22;
+}
+.cols
+{
+    width:25%;
+    float:left;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+   
+      
+}
+.cols1
+{
+    
+    width:50%;
+    float:left;
+    margin-left: 150px;
+    padding-left: 30px;
+    padding-top: 150px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+   
+      
+}
+section
+{
+    padding: 80px;
+}
+.long-para
+{
+    width: 70%;
+    line-height: 145%;
+    margin-left: 15%;
+    
+}
+.box p
+{
+    font-size: 90%;
+    line-height: 145%;
+    
+}
+.meal-show
+{
+    list-style: none;
+    width: 100%;
+}
+.meal-show li
+{
+    display: block;
+    float:left;
+    width: 25%;
+}
+.meal-photo 
+{
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    
+}
+.meal-photo img
+{
+    opacity: 0.7;
+    width: 100%;
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s opacity 0.5s ;
+}
+.section-meal
+{
+    padding: 0;
+}
+.meal-photo img:hover
+{
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+.clearfix {zoom: 1}
+.clearfix
+{
+    content:'.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+
+    
+}
+
+
+.section-step
+{
+    margin-top:30px;
+}
+.section-step:first-child
+{
+    text-align: right;
+    padding-right: 3%;
+}
+.section-step:last-child
+{
+    padding-left: 3%;
+}
+.app
+{
+    width: 300px;
+    height: 500px;
+    
+}
+.work-step
+{
+    margin-bottom: 50px;
+    text-align:left;
+}
+.work-step div
+{
+    
+    color:coral;
+    border:2px solid coral;
+    display: inline-block;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float:left;
+    font-size: 150%;
+    margin-right: 5%;
+}
+.cities
+{
+    margin-top: 30px;
+}
+.box img
+{
+    width:100%;
+    height:auto;
+    margin-bottom: 15px;
+}
+.city-feature
+{
+    color:#383434;
+    margin-bottom: 10px;
+    
+    
+}
+h2
+{
+    color:grey;
+}
+
+.icon-small
+{
+    display:inline-block;
+    width:30px;
+    text-align: center;
+    color:orange;
+    font-size: 75%;
+    margin-right: 10px;
+    line-height: 120%;
+    
+    margin-top: -5px;
+}

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <h4 class="card-header">Add Product</h4>
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2">Please add new Product</h6>
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label class="col-form-label">Product Name</label>
+              <input type="text" class="form-control" placeholder="Product Name" name="ProductName" #name>
+            </div>
+            <div class="form-group col-md-6">
+              <label class="col-form-label">Price</label>
+              <input type="text" class="form-control" placeholder="Price" name="price" #price>
+            </div>
+          </div>
+          <div class="form-row float-right">
+            <button type="submit" class="btn btn-outline-primary mr-1" (click)="add(name.value,price.value)">Add</button>
+            <button class="btn btn-outline-dark mr-2" (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+<form>
+  Product:<br>
+  <input type="text" name="name" value="">
+  <br>
+  Price:<br>
+  <input type="text" name="price" value="">
+  <br><br>
+  <button (click)="addProduct(name.value,price.value)" class="btn btn-primary">Add</button>
+</form> 
+-->

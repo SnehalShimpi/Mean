@@ -1,0 +1,637 @@
+
+----------------------------------------------------------------------------------------------------------------------------------------
+in javascript everything consider as object
+
+java script is prototype based programming language...every object of java script has prototype property which make help to possible inheritance.
+
+each object that we create which is instance of object constructor.....
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+when we write function constructor the its first letter must be capital. 
+
+var student = {
+     firstName : 'snehal',
+    lastName : 'shimpi',
+    dateOfBirth : 1996,
+    address : 'pune' 
+};
+
+var Stud = function(firstName, lastName ,dateOFBirth,address )
+{
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dateOfBirthbirth =dateOFBirth;
+    this.addressd= address;
+    
+}
+
+(this variable points to a global object.)
+here this.firstname pointing to global object that firstname.
+
+in above exaple student it is object and Stud it is function constructor we can create a lot instances using function pointer 
+Ex =
+
+var s1= new Stud('ankita','joshi',1996,'pune');
+var s2= new Stud('amita','joshi',1945,'pune');
+var s3= new Stud('anuj','joshi',1969,'pune');
+
+the above statement also called as a instances.
+
+(new keyword it is used to create a empty object) 
+then this variable points to the newly created empty object not global object.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+INHERITANCE 
+Adding Method to constructor
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+var Stud = function(firstName, lastName ,dateOFBirth,address )
+{
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dateOfBirthbirth =dateOFBirth;
+    this.addressd= address;
+    this.calAge = function()
+    {
+        console.log(2018 - this.dateOfBirthbirth);
+    }
+
+    
+}
+
+
+
+when the method write into contructor then it apply it to all the object that created....if the function is 5,6 lines then its ok but if the function is 1000,5000 line of code then it is not efficient bcz every object conatain copy of that method (thats why we used inheritance means prototype property)
+
+ex :
+
+var s1= new Stud('ankita','joshi',1996,'pune');
+s1.calAge();
+
+var s2= new Stud('amita','joshi',1945,'pune');
+s2.calAge();
+
+var s3= new Stud('anuj','joshi',1969,'pune');
+s3.calAge();
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+USING PROTOTYPE PROPERTY
+
+this method not in constructor but we can use it using prototype property
+
+Stud.prototype.calAge = function()
+    {
+        console.log(2018 - this.dateOfBirthbirth);
+    }
+
+we can add property to existing object.
+
+Stud.prototype.job = 'developer';
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+ANOTHER WAY TO CREATE OBJECT & INHERITANCE
+
+ The Object.create() method
+
+var personProto = {
+   calAge : function()
+    {
+        console.log('hey');
+    }
+};
+
+var john = Object.create(personProto);
+john.name='richie';
+john.job='developer';
+john.add='une';
+
+its also take second parameter that used to set value
+
+var jane = Object.create(personProto, {
+    name: { value: 'Jane' },
+    yearOfBirth: { value: 1969 },
+    job: { value: 'designer' }
+});	
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+ PRMITIVE AND OBJECT
+
+Primitives : boolean,null,number,string,undefine are primitives and rest of them are objects
+
+// Primitives
+
+in primitive it copy the value into another variable
+
+var a = 23;
+var b = a;
+a = 46;
+console.log(a);
+console.log(b);
+
+
+
+// Objects
+
+objects are not get copy bt it pointing to same object 
+
+var obj1 = {
+    name: 'John',
+    age: 26
+};
+var obj2 = obj1; (it only create new reference which point to same object)
+obj1.age = 30;
+console.log(obj1.age);
+console.log(obj2.age);
+
+
+// when we pass primitive and object to function as a parameter
+
+// Functions
+var age = 27;
+var obj = {
+    name: 'Jonas',
+    city: 'Lisbon'
+};
+
+function change(a, b) {
+    a = 30;
+    b.city = 'San Francisco';
+}
+
+change(age, obj);
+
+console.log(age); //27
+console.log(obj.city); //'san francisco'
+
+when object pass as a parameter to function then it treated as a reference
+
+//FUNCTIONS ARE ALSO OBJECT IN JAVASCRIPT
+
+->  function are instance of object type
+->  A function behave like another object
+->  We can store function in variable
+->  We can pass function as a argument to another function
+->  We can return function from  function
+
+
+//passing anonomious function as a argument
+
+//Normal Function
+
+function fun(abc)
+{
+    return abc + "Hello World";
+}
+var ans = fun("good morning ");
+console.log(ans);
+
+//passing anonomious function as argument
+ 
+function fun(abc)
+{
+    return abc();
+}
+var ans = fun( 
+function ()
+{ 
+ return "good morning " 
+}
+);
+console.log(ans);
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+//IIFE (IMEDIATE INVOKE FUNCTION EXPRESSION)
+
+if we want to hide variable from outside scope then we use IIFE.
+we can use  it by creating function as anonomious and invoke immediatly after the } bracket.
+use of this concept is hiding the data from outside 
+----------------------------------------------------------------------------------------------------------------------
+var a=10; //10
+a++;  //11
+ function abc()
+{
+a=a+1;   //12
+}
+
+ in above example a variable declare as a global variable...so in function abc it get access to prevent this we used anonomious function and called immediatly.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+(function () { 
+    var aName = "Barry";
+})();
+
+here we can not use aName variable outside the function...
+if we dont want to  use global variable. and the variable that declare only once then IIFE uses....that  (it create data privacy)
+
+---------------------------------------------------------------------------------------------------------------------------------------------  
+
+//CLOSURE
+
+it is stateful function in java script
+they remember theier private data variable data after call
+
+if we write function like this
+
+function demo()
+{
+var a=10;
+a++;
+console.log(a);
+}
+
+demo(); //11
+demo();  //11
+
+it give output as 11 11 means when we call the function then seprate stack frame is created and when the call get completed then stack frame dget removed....
+but if want to preserv the value of a varible during all function call the another way is declare the varibla as a global ...... but we deaclare as a global then all function get used thats why clousre come up into the market..
+
+what closure does
+
+the function conatain anonomious function in it after the stackframe removed still that function can used the variable that declare on parent function.
+
+function maths()
+{
+    var a,b,c;
+    a=10,b=30;
+    c = a + b ;
+    console.log(c);
+    return function ()
+    
+    {
+        c = a - b;
+        console.log(c);
+    }
+}
+
+var x = maths();
+x();
+
+// Es6
+ Es6 it is next version of javascript here it implement the previous javascript syntax.
+ it uses function scope for variable 
+it let and const
+const = means when we declare the variable then we cannot change the value of that variable.
+if it use let then scope of let variable is block scope we cannot use outside of the block.
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+String
+
+in String For Displaying string in Es5 it uses Syntax like this 
+
+//String ES5
+
+let N1 = 'vfkh';
+let N2 = 'hjsgfd';
+
+function Calyear(year)
+{
+    return 2018 - year;
+}
+
+console.log(N1 + " "+ N2 +" " +Calyear(1996));
+
+And for Es6 it display the string using backqoute. (``)
+//Es6
+
+this Concept is called as template literals.
+	
+console.log(`this is ${N1} ${N2} And the current year is ${Calyear(1996)}`);
+
+String include this method 
+console.log(n.startsWith('j')); 
+console.log(n.endsWith('d'));
+console.log(n.includes('z'));
+console.log(n.repeat(5));
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+//arrow Function use
+
+//Es5
+
+const arr = [1996,1990,1960,1995];
+var abc = arr.map(function calAge(el)
+                 {
+            return 2018 - el;    
+});
+console.log(abc);
+
+//Es6
+
+var ab1 = arr.map(el => 2019-el);
+console.log(ab1);
+
+for 2 argument it uses like this
+
+var ab2 = arr.map((el ,index) => `this is index ${index + 1} this is age ${2020 - el}`);
+console.log(ab2);
+
+//if we write more line of code then it uses {} brackets and return keywrod at the end.
+
+var ab3 = arr.map((el,index) =>
+                 {
+                  const now = new Date().getFullYear();
+                  const age5= now - el;
+                 return `age is ${age5}`;
+                  });
+console.log(ab3);
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+in Es5 when we write function like this
+
+var box = {
+    Fname : 'amit',
+    Lname : 'shinde',
+    Fun  : function()
+    {
+        document.querySelector('.green').addEventListener('click',function()
+                                                          {
+            
+        
+              var str = 'this is a firstName' +this.Fname +'this is a last Name'+ this.Lname;                                   
+            alert("yeahhhhh its Working" + str);
+        });
+    }
+};
+
+box.Fun();
+
+then it give output like this
+this is a first Name undefined this is a last Name undefined
+
+it giving undefine name bcz this keyword pointing to global object means window object..and here it uses callback function thats why it gives undefine name of variable	
+
+but we can access that variable bye strore that value into another variable
+ 
+var box = {
+    Fname : 'amit',
+    Lname : 'shinde',
+    Fun  : function()
+    {
+        var Acc= this.Fname;
+        var Accc= this.Lname;
+        document.querySelector('.green').addEventListener('click',function()
+                                                          {
+            
+        
+              var str = 'this is a firstName' + Acc +'this is a last Name'+ Accc;                                   
+            alert("yeahhhhh its Working" + str);
+        });
+    }
+};
+
+box.Fun();
+
+using Es6 we can use this keyword inside callback function
+like this
+var box6 = {
+    Fname : 'amit',
+    Lname : 'shinde',
+    Fun  : function()
+    {
+       
+        document.querySelector('.green').addEventListener('click',() =>
+                                                          {
+            
+        
+              var str = 'this is a firstName' + this.Fname +'this is a last Name'+ this.Lname;                                   
+            alert("yeahhhhh its Working" + str);
+        });
+    }
+};
+
+box6.Fun();
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+//Destrucring
+
+//Es5
+
+var brr = ['ajay',25];
+var name = brr[0];
+var age = brr[1];
+console.log(name + ' '+ age );
+
+//Es6
+
+const [name6,age1] = ['kshitij' , 22 ];
+console.log(name6);
+console.log(age1);
+
+var obj9 = {
+    Nav  : 'amkita',
+    AadNav : 'junavne'
+};
+console.log(obj9.Nav + ' ' +obj9.AadNav);
+
+const{Nav , AadNav } = obj9;
+console.log(Nav);
+console.log(AadNav);
+
+const{Nav: c, AadNav : d } = obj9;
+console.log(c);
+console.log(d);
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+//spread operator
+spread opeartor takes an array and tranform it into single value.
+
+function addForAges(a,b,c,d,e)
+{
+    return a+b+c+d+e;
+}
+
+var sum1 = addForAges(11,21,51,101,111);
+console.log(sum1);
+
+var ages = [10,11,12,13,15];
+
+var sum2 = addForAges.apply(null,ages);
+console.log(sum2);
+
+
+//Es6
+
+var sum3 = addForAges(...ages);
+console.log(sum3);
+
+//we can add two array into one array using spread operator
+
+const sum4 = [...arr ,...brr];
+console.log(sum4);
+
+function gun()
+{
+    console.log(arguments);
+}
+gun(11,21,51,101,121);  
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Rest Parameter :
+  rest parameter are looks same as spread operator but they are totaly opposite of rest parameter. spread opearot take am array and convert it into single value....and rest parameter take parameter as an argument and convert it into array.
+
+
+//Es5
+function Sun()
+{
+    //console.log(arguments);
+    var arrvar = Array.prototype.slice.call(arguments);
+    arrvar.forEach(function(cur)
+                  {
+        console.log((2018 - cur)>18);
+        
+    });
+                                         
+        
+    
+}
+Sun(1000,1996,2005);
+
+//in above code arguments is work like a this keyword.
+
+
+//Es6
+/* here arugument converted into an array. this function is exact same as above function only we use rest parameter which help to become code shorter and easy to read.
+
+function sun (...year)
+{
+    console.log(year);
+}
+sun(5000,9000,5000);
+*/
+
+function sun (...year)
+{   
+    year.forEach(function(cur)
+                {
+        console.log((2018 - cur)>18);
+        });
+    
+}
+sun(5000,9000,5000);
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+//MAP
+// map it is topic of ES6 it is nothing but a data structure
+
+const quetion = new Map();
+quetion.set('quetion','what is your Job profile');
+quetion.set(1,'Es5');
+quetion.set(2,'Es6');
+quetion.set(3,'Es2015');
+quetion.set('correct',3);
+
+console.log(quetion.size);
+console.log(quetion);
+console.log(quetion.get('quetion'));
+
+quetion.delete(2);
+
+quetion.forEach((value , key) =>
+ console.log(`this is key ${key}, it is value ${value}`));                 	
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+//Classes
+
+//Es5 
+
+var Person5 = function(name,yearOfBirth,job)
+{
+    this.name =name;
+    this.yearOfBirth = yearOfBirth;
+    this.job =job;
+}
+Person5.prototype.getAge = function()
+{
+    
+    console.log("oooooo oooooo");
+}
+
+var athlic = function(name,yearOfBirth,job,run,add)
+{
+    Person5.call(this,name,yearOfBirth,job);
+    this.run = run;
+    this.add = add;
+}
+athlic.prototype = Object.create(Person5.prototype);
+
+var joz = new Person5('emma',1996,'developer');
+var jozef = new athlic('bfdh',56,'hjf',25,'hf');
+console.log(jozef);
+//athlic.getAge();
+joz.getAge();
+jozef.getAge();
+
+//Es6
+
+class Demo
+{
+    constructor(name,Year)
+    {
+        this.name = name;
+        this.Year = Year;
+    }
+
+    CalAge ()
+    {
+        console.log(2018 - this.Year);
+    }
+}
+
+class Demo1 extends Demo
+{
+    constructor(name,year,Add)
+    {
+        super(name,year);
+        this.Add = Add;
+    }
+    Fun()
+    {
+        console.log("Good Afternoon");
+    }
+}
+
+var ob = new Demo('snehal',1996);
+const ob1 = new Demo('dkgshg',1950);
+
+var obj = new Demo1('amita',1995,'pune');
+obj.Fun();
+obj.CalAge();
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Object Literals ..
+
+In object literal notation, an object is described as a set of comma-separated name/value pairs enclosed in curly braces ({}). Names inside the object may be either strings or identifiers that are followed by a colon. There should be no comma used after the final name/value pair in the object as this may result in errors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

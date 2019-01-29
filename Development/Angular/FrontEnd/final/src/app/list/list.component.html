@@ -1,0 +1,35 @@
+
+<div style="text-align:center">
+    {{errorMsg}}
+  <br>
+  <br>
+  <br>
+  <div class =  "home" >
+    <table style="width:100%">
+      <tr>
+        <th>Id</th>
+        <th>Product</th> 
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor = " let pro of product ; index as i"  >
+        <td>{{i+1}}</td>
+        <td>{{pro.name}}</td> 
+        <td>{{pro.price}}</td>
+        <td>
+          
+          <form method="get" routerLink ="/update/{{pro._id}}/{{pro.name}}/{{pro.price}}">
+          <button class="btn btn-primary">update</button>
+        </form>
+      </td>
+        
+        <td>
+        <form method="get" routerLink ="/delete/{{pro._id}}">
+        <button class="btn btn-primary">delete</button>
+        </form>
+        </td>
+      </tr>
+     
+    </table>
+  </div>
+  

@@ -1,0 +1,72 @@
+<form  [formGroup]= "userForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create User</h3>
+    </div>
+    <div class="panel-body" > 
+      <div class="form-group" [ngClass]="{'has-error' : userForm.get('fullName').errors 
+      && (userForm.get('fullName').dirty || userForm.get('fullName').touched )}">
+        <label class="col-sm-2 control-label" for="fullName">Full Name</label>
+        <div class="  col-sm-8" >
+         
+          <input id="fullName" formControlName="fullName" type="text" class="form-control">
+          <span class="help-block" *ngIf="userForm.get('fullName').errors && userForm.get('fullName').dirty || userForm.get('fullName').touched">
+              <!-- <div *ngIf="userForm.get('fullName').errors"> -->
+                <span *ngIf="userForm.get('fullName').errors?.required">Name is required</span>
+             <!-- </div> -->
+             <!-- <div *ngIf="userForm.get('fullName').errors"> -->
+
+              <span *ngIf="userForm.get('fullName').errors?.minlength || userForm.get('fullName').errors?.maxlength">Name should be greater than 2 character and less than 10 characher</span>
+             <!-- </div> -->
+          </span>
+        </div>
+        </div>
+
+      
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="email">Email</label>
+        <div class="col-sm-8">
+          <input id="email"  formControlName="email" type="text" class="form-control">
+        </div>
+      </div>
+
+      <div formGroupName="skills">
+         <div class="form-group">
+          <label class="col-sm-2 control-label" for="skill">skills</label>
+          
+          <div class="col-sm-4">
+              <input type ="text" id="SkillName" formControlName="skillName" placeholder="Name">
+          </div>
+          <div class="col-sm-4">
+              <input type="text" id="Experiance" placeholder="Experiance in years" formControlName="experiance">
+          </div>
+         
+        </div>
+
+           <div class="form-group">
+             <label class="col-md-2 control-label">Proficiency</label>
+             <div class="col-sm-8">
+               <label class="radio-inline">
+                  <input type="radio" id="beginner" value="beginner" formControlName="Proficiency">beginner
+               </label>
+             <label class="radio-inline">
+                <input type="radio" id="intermediate" value="intermediate" formControlName="Proficiency">intermediate
+             </label>
+               <label class="radio-inline">
+                <input type="radio" id="advance" value="advance" formControlName="Proficiency">advance
+             </label>
+           </div>
+           </div>
+           </div>
+        
+
+   
+    <div class="panel-footer">
+      <div class="btn-toolbar">
+      <button class="btn btn-primary" type="submit">Save</button>
+      <button class="btn btn-primary" type="button" (click)="OnDataLoad()">Load Data</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</form>

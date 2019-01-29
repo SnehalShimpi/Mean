@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" value="{{ProductName}}" name="ProductName" #name>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" value="{{Price}}" name="price" #price>
+      </div>
+      <button type="submit" class="btn btn-outline-primary mr-1" (click)="UpdateData(name.value , price.value)">update</button>
+     
+      
+    </form>
+    <br>
+    <form method="get" routerLink ="/list">
+      <button class="btn btn-outline-primary mr-1">Cancel</button>
+      </form>
+  </div>

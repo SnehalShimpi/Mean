@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12  mx-auto">
+    <div class="card">
+      <div class="card-heading border bottom">
+        <h4 class="card-title">Products
+          <a [routerLink]="['add']" class="btn btn-default pull-right btn-sm">
+            <i class="ti-plus"></i> Add Product</a>
+        </h4>
+      </div>
+      <div class="card-block">
+        <table class="table table-hover" id="tableMyActivities">
+          <thead>
+            <tr>
+              <th class="no-border">Name.</th>
+              <th class="no-border">Price</th>
+              <th class="no-border">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products;">
+              <td> {{ product.name }} </td>
+              <td> {{ product.price }} </td>
+              <td>
+                <span [routerLink]="['edit/', product._id ]">
+                  <i class="fa fa-pencil"></i>
+                </span>
+                <span class="pdd-left-20" (click)="deleteProduct(product._id)">
+                  <i class="fa fa-trash"></i>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
